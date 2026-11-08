@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhaki Andandani Syahmi — Web Developer Portfolio</title>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Vector Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism subtle backdrop */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+        }
+
+        /* Aesthetic Ambient Glows */
+        .ambient-glow-1 {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+            top: -50px;
+            left: -50px;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .dark .ambient-glow-1 {
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+        }
+
+        .ambient-glow-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+            bottom: 10%;
+            right: -100px;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .dark .ambient-glow-2 {
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.12) 0%, rgba(15, 23, 42, 0) 70%);
+        }
+
+        /* Custom Hover Transitions */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        .dark .card-hover:hover {
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Grid Background Pattern */
+        .bg-grid-pattern {
+            background-size: 30px 30px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        }
+
+        .dark .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 relative overflow-x-hidden min-h-screen bg-grid-pattern">
+
+    <!-- Ambient Lighting Effects -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200/80 dark:border-slate-800/80 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform duration-200">
+                    <i class="fa-solid fa-code text-sm"></i>
+                </div>
+                <span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">Zhaki<span class="text-sky-500">.dev</span></span>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
+                <a href="#about" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Tentang</a>
+                <a href="#skills" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Keahlian</a>
+                <a href="#projects" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Proyek</a>
+                <a href="#contact" class="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Kontak</a>
+            </nav>
+
+            <!-- Theme Toggle & Actions -->
+            <div class="flex items-center gap-3">
+                <button id="themeToggle" class="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all duration-200" title="Ubah Tema">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100 transition-all shadow-sm">
+                    <span>Hubungi</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 pt-12 pb-24 space-y-24">
+
+        <!-- Hero Section -->
+        <section class="flex flex-col items-center text-center pt-8 pb-4">
+            <!-- Subtle Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200/60 dark:border-sky-800/50 text-sky-600 dark:text-sky-400 text-xs font-semibold tracking-wide uppercase mb-6">
+                <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                Web Development Enthusiast
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-3xl leading-[1.15]">
+                Membangun Pengalaman Web yang <span class="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">Modern & Estetik</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl font-normal leading-relaxed">
+                Halo, saya <strong class="text-slate-800 dark:text-slate-200 font-semibold">Zhaki Andandani Syahmi</strong>. Pelajar yang berdedikasi mempelajari desain antarmuka, pembuatan situs web responsif, dan logika pemrograman web modern.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <a href="#projects" class="px-6 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-semibold text-sm shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] flex items-center gap-2">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span>Lihat Portofolio</span>
+                </a>
+                <a href="#contact" class="px-6 py-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/80 text-slate-700 dark:text-slate-200 font-semibold text-sm transition-all hover:scale-[1.02] flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Kirim Pesan</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-8 sm:p-10 card-hover shadow-sm">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center font-bold text-sm">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Tentang Saya</h2>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                    Saya merupakan seorang pelajar yang memiliki semangat tinggi dalam menguasai teknologi web. Perjalanan saya dimulai dari rasa penasaran tentang bagaimana sebuah website dibuat dan berfungsi secara optimal di berbagai perangkat.
+                </p>
+                <p class="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                    Fokus utama saya saat ini adalah mengasah kemampuan fondasi front-end seperti struktur HTML5, tata letak estetik CSS3, serta interaktivitas menggunakan JavaScript, guna bersiap memasuki jenjang studi lanjutan di bidang Rekayasa Perangkat Lunak (RPL).
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="scroll-mt-24">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center font-bold text-sm">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Keahlian & Alat</h2>
+                </div>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                <!-- HTML -->
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-3 text-center card-hover group">
+                    <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-html5"></i>
+                    </div>
+                    <span class="font-semibold text-sm text-slate-800 dark:text-slate-200">HTML</span>
+                    <span class="text-[11px] font-medium text-slate-400">Struktur Semantic</span>
+                </div>
+
+                <!-- CSS3 -->
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-3 text-center card-hover group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-css3-alt"></i>
+                    </div>
+                    <span class="font-semibold text-sm text-slate-800 dark:text-slate-200">CSS</span>
+                    <span class="text-[11px] font-medium text-slate-400">Flexbox & Grid</span>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-3 text-center card-hover group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <span class="font-semibold text-sm text-slate-800 dark:text-slate-200">JavaScript</span>
+                    <span class="text-[11px] font-medium text-slate-400">DOM Interaktif</span>
+                </div>
+
+                <!-- Git & GitHub -->
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-3 text-center card-hover group">
+                    <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-500 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <span class="font-semibold text-sm text-slate-800 dark:text-slate-200">Git & GitHub</span>
+                    <span class="text-[11px] font-medium text-slate-400">Version Control</span>
+                </div>
+
+                <!-- CapCut -->
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-3 text-center card-hover group col-span-2 sm:col-span-1">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <span class="font-semibold text-sm text-slate-800 dark:text-slate-200">CapCut</span>
+                    <span class="text-[11px] font-medium text-slate-400">Video Editing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="scroll-mt-24">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center font-bold text-sm">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Proyek Pilihan</h2>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-panel rounded-2xl p-6 card-hover flex flex-col justify-between group">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center mb-4 text-lg group-hover:bg-sky-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Website Portofolio</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                            Website portofolio interaktif berkonsep glassmorphism modern dengan dukungan mode gelap otomatis.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+                        <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400">HTML5</span>
+                        <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">Tailwind</span>
+                        <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">JS</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel rounded-2xl p-6 card-hover flex flex-col justify-between group">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center mb-4 text-lg group-hover:bg-purple-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-clapperboard"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Content & Media Showcase</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                            Dokumentasi penyusunan skrip presentasi dan proses penyuntingan video kreatif untuk proyek sekolah.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+                        <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400">CapCut</span>
+                        <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Scripting</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-panel rounded-2xl p-6 card-hover flex flex-col justify-between group">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-4 text-lg group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white mb-2">Mini Interactive Web App</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                            Kumpulan modul eksperimen sederhana seperti kalkulator, daftar tugas (to-do list), dan manipulasi DOM.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-200/60 dark:border-slate-800/60">
+                        <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400">HTML5</span>
+                        <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-24">
+            <div class="glass-panel rounded-3xl p-8 sm:p-10 shadow-sm relative overflow-hidden">
+                <div class="max-w-xl">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-address-book"></i>
+                        </div>
+                        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Kontak Pribadi</h2>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-8 leading-relaxed">
+                        Tertarik untuk berdiskusi seputar proyek web atau kolaborasi? Hubungi saya secara langsung melalui saluran di bawah ini.
+                    </p>
+
+                    <div class="space-y-4">
+                        <!-- WhatsApp Link -->
+                        <a href="https://wa.me/6285179940443" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800/80 hover:border-emerald-500 dark:hover:border-emerald-500/50 transition-all card-hover group">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-medium text-slate-400">WhatsApp</div>
+                                <div class="font-semibold text-sm text-slate-900 dark:text-white">0851-7994-0443</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 ml-auto group-hover:text-emerald-500 transition-colors"></i>
+                        </a>
+
+                        <!-- Email Link -->
+                        <a href="mailto:zhakiandandani123@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800/80 hover:border-sky-500 dark:hover:border-sky-500/50 transition-all card-hover group">
+                            <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl group-hover:bg-sky-500 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <div class="text-xs font-medium text-slate-400">Email</div>
+                                <div class="font-semibold text-sm text-slate-900 dark:text-white truncate">zhakiandandani123@gmail.com</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 ml-auto group-hover:text-sky-500 transition-colors"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200/80 dark:border-slate-800/80 py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Zhaki Andandani Syahmi. Hak Cipta Dilindungi.</p>
+            <div class="flex items-center gap-4 text-sm text-slate-400">
+                <a href="#about" class="hover:text-sky-500 transition-colors"><i class="fa-solid fa-angle-up"></i> Ke Atas</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        // Dark Mode Logic
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-sun text-amber-400';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.className = 'fa-solid fa-moon text-slate-600';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Initialize Theme preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(!isDark);
+        });
+    </script>
+</body>
+</html>
